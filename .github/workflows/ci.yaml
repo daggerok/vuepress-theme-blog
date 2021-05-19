@@ -1,0 +1,32 @@
+name: CI
+on:
+  push:
+    branches: [ master ]
+    #paths:
+    #  - blog/*
+  pull_request:
+    branches: [ master ]
+    #paths:
+    #  - blog/*
+jobs:
+  github-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        id: cache
+        with:
+          path: |
+            ~/.n*
+            !~/.m2/repository/com/gituhb/daggerok
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - run: npm -v ; node -v ; npm i -E ; npm -v ; node -v
+      - run: npm run build-github-pages
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: src/.vuepress/dist # The folder the action should deploy.

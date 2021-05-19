@@ -1,0 +1,37 @@
+{
+  "name": "vuepress-theme-blog",
+  "version": "1.0.0",
+  "description": "VuePress official blog theme usage example",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev src --no-clear-screen --debug --open",
+    "prebuild": "rimraf src/.vuepress/dist",
+    "build": "vuepress build src --no-cache",
+    "build-github-pages": "cross-env BASE='/vuepress-theme-blog/' npm run build",
+    "preserve-github-pages": "npm run build-github-pages -- -- --dest src/.vuepress/dist/vuepress-theme-blog",
+    "serve-github-pages": "npx browser-sync start --config test/bs-config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rimraf",
+    "vuepess",
+    "cross-env",
+    "browser-sync",
+    "@vuepress/theme-blog",
+    "@vuepress/plugin-medium-zoom",
+    "@vuepress/plugin-back-to-top",
+    "markdown-it-vuepress-code-snippet-enhanced"
+  ],
+  "author": "Maksim Kostromin <daggerok@gmail.com> (https://github.com/daggerok)",
+  "license": "MIT",
+  "dependencies": {
+    "@mr-hope/vuepress-types": "1.17.0",
+    "@vuepress/plugin-back-to-top": "1.8.2",
+    "@vuepress/plugin-medium-zoom": "1.8.2",
+    "@vuepress/theme-blog": "2.3.3",
+    "cross-env": "7.0.3",
+    "markdown-it-vuepress-code-snippet-enhanced": "1.0.1",
+    "rimraf": "3.0.2",
+    "vuepress": "1.8.2"
+  }
+}
